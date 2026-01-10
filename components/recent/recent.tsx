@@ -1,10 +1,29 @@
-export default function Recent() {
-  return (
-	<section className="my-12">
-	  <h2 className="mb-6 text-3xl font-bold">Recent Posts</h2>
-	  <div className="grid gap-6 md:grid-cols-2">
-		{/* Recent post items would go here */}
-	  </div>
-	</section>
-  );
+import { getPosts } from "../../actions/getPosts";
+import Image from "next/image";
+import styles from "./recent.module.css";
+export default async function Recent() {
+	const posts = await getPosts();
+
+	return (
+		<section>
+			<h2>Recent Posts</h2>
+			<div>
+				{posts.map((post) => (
+					<div key={post.id}>
+						<Image
+							className={styles.image}
+							src="/pasta.jpg"
+							alt="Featured Post"
+							width={500}
+							height={450}
+						/>
+						<h3>{post.title}</h3>
+						<h4>{post.authorId}</h4>
+						<h4>Likes: {post.likes}</h4>
+						<p>{post.content}</p>
+					</div>
+				))}
+			</div>
+		</section>
+	);
 }
