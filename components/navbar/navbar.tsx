@@ -12,7 +12,7 @@ export default function Navbar() {
 				<Link href="/post">Dinner</Link>
 				<Link href="/post">Dessert</Link>
 				<Link href="/post">Saved</Link>
-				<Link href="/">Login</Link>
+				<Link href="/login">Login</Link>
 			</div>
 		</nav>
 	);
